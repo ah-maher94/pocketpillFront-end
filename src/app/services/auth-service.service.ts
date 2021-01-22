@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class AuthServiceService {
 
-  private baseUrl = 'http://127.0.0.1:8000/api';
+  private baseUrl = 'https://pocket-pills.herokuapp.com/api';
   currentUser: any= [];
   id: any;
 
