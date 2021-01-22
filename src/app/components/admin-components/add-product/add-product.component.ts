@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient}from '@angular/common/http'; 
 import { FormGroup, FormControl,FormBuilder,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -20,9 +21,11 @@ export class AddProductComponent implements OnInit {
   categorys:any;
   manufacturererror:any;
   productCodeerror;
-  constructor(private http: HttpClient,private profile: FormBuilder,private router: Router) { }
+  constructor(private authService: AuthServiceService,
+    private http: HttpClient,private profile: FormBuilder,private router: Router) { }
 
   async ngOnInit(): Promise<void> {
+    this.authService.authUser();
     this.addProductReactiveForm = this.profile.group({
       productName: ['', [Validators.required]],
       productPrice: ['', [Validators.required]],

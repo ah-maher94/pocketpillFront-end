@@ -1,4 +1,5 @@
 import { Component, OnInit  } from '@angular/core';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
   selector: 'app-add-catagory',
@@ -7,9 +8,10 @@ import { Component, OnInit  } from '@angular/core';
 })
 export class AddCatagoryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthServiceService) { }
 
   ngOnInit(): void {
+    this.authService.authUser();
     // async ngOnInit(): Promise<void> {
       // try {
       

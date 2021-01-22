@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
   selector: 'app-admin-products',
@@ -10,9 +11,11 @@ export class AdminProductsComponent implements OnInit {
   categories: any;
   products: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, 
+    private authService: AuthServiceService) {}
 
   async ngOnInit(): Promise<void> {
+    this.authService.authUser();
     try {
       await this.http
         .get('https://pocket-pills.herokuapp.com/api/category')
