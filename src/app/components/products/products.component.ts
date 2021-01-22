@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../data/data.service';
 import { HttpClient } from '@angular/common/http';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -19,9 +20,12 @@ export class ProductsComponent implements OnInit {
   found = 0;
   AvailableQuantity: any;
   available = 0;
-  constructor(private diplayedProduct: DataService, private http: HttpClient) { }
+  constructor(
+    private authService: AuthServiceService,
+    private diplayedProduct: DataService, private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.authService.authAdmin();
     this.diplayedProduct.currentMessage.subscribe(result => {
       this.product = result;
       

@@ -3,6 +3,7 @@ import { HttpClient}from '@angular/common/http';
 import { FormGroup, FormControl,FormBuilder,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../../data/data.service'; 
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
   selector: 'app-categories',
@@ -11,9 +12,12 @@ import { DataService } from '../../data/data.service';
 })
 export class CategoriesComponent implements OnInit {
   categorys: any;
-  constructor(private http: HttpClient,private setCategory: DataService) { }
+  constructor(
+    private authService: AuthServiceService,
+    private http: HttpClient,private setCategory: DataService) { }
 
   async ngOnInit(): Promise<void> {
+    this.authService.authAdmin();
     try {
       await this.http.get("http://127.0.0.1:8000/category")
       .subscribe(res =>{

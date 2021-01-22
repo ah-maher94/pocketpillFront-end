@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient}from '@angular/common/http'; 
 import { FormGroup, FormControl,FormBuilder,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 @Component({
   selector: 'app-add-employer',
   templateUrl: './add-employer.component.html',
@@ -19,9 +20,11 @@ export class AddEmployerComponent implements OnInit {
     categorys:any;
     phonenumbererror:any;
 
-  constructor(private http: HttpClient,private profile: FormBuilder,private router: Router) { }
+  constructor(private authService: AuthServiceService,
+    private http: HttpClient,private profile: FormBuilder,private router: Router) { }
 
  async ngOnInit(): Promise<void> {
+  this.authService.authUser();
     this.addEmployerReactiveForm = this.profile.group({
       staffName: ['', [Validators.required]],
       staffEmail: ['', [Validators.email,Validators.required]],

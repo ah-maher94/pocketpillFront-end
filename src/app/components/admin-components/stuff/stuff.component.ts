@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
   selector: 'app-stuff',
@@ -14,9 +15,11 @@ export class StuffComponent implements OnInit {
   editedValue: Array<string>;
   numberOfInput = 50;
   changeInput: Array<string> = [];
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private authService: AuthServiceService) { }
 
   async ngOnInit(): Promise<void> {
+    this.authService.authUser();
     try {
       await this.http
         .get('https://pocket-pills.herokuapp.com/api/staff')
