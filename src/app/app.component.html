@@ -1,17 +1,16 @@
 
-<div *ngIf="true">
-
-
+<div *ngIf="UserRoute">
     <app-header></app-header>
-    <router-outlet></router-outlet>
+</div>
+<div *ngIf="adminRoute">
+    <app-nav></app-nav>
+</div>
+<router-outlet></router-outlet>
+<div *ngIf="UserRoute">
+
     <app-footer></app-footer>
 </div>
-<!-- admin -->
-
-
-<div *ngIf="false">
-    <app-nav></app-nav>
-    <router-outlet></router-outlet>
+<div *ngIf="adminRoute">
     <app-admin-footer></app-admin-footer>
 </div>
 

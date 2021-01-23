@@ -21,6 +21,8 @@ export class AddProductComponent implements OnInit {
   categorys:any;
   manufacturererror:any;
   productCodeerror;
+  imageLinkerror;
+  branchId;
   constructor(private authService: AuthServiceService,
     private http: HttpClient,private profile: FormBuilder,private router: Router) { }
 
@@ -34,9 +36,10 @@ export class AddProductComponent implements OnInit {
       quantity: ['',[Validators.required]],
       manufacturer: ['',[Validators.required]],
       productCode: ['',[Validators.required]],
+      imageLink: ['',[Validators.required]],
     });
     try {
-      await this.http.get("http://127.0.0.1:8000/category")
+      await this.http.get("https://pocket-pills.herokuapp.com/api/category")
       .subscribe(res =>{
       this.categorys=res;
       console.log(res);
@@ -64,9 +67,10 @@ export class AddProductComponent implements OnInit {
     this.quantityerror=this.addProductReactiveForm.controls.quantity.errors;
     this.categoryerror=this.addProductReactiveForm.controls.category.errors;
     this.manufacturererror=this.addProductReactiveForm.controls.manufacturer.errors;
-
+    this.imageLinkerror=this.addProductReactiveForm.controls.imageLink.errors;
     this.productCodeerror=this.addProductReactiveForm.controls.productCode.errors;
-
+    console.log(this.addProductReactiveForm.controls.category.value);
+      
     if(this.productNameerror ==null 
       && this.productPiceerror==null 
       && this.descriptionerror==null 
@@ -76,8 +80,10 @@ export class AddProductComponent implements OnInit {
       && this.manufacturererror==null)
     {
       const fd =new FormData;
+      
+      fd.append('productImage',this.addProductReactiveForm.controls.imageLink.value);
+      // fd.append('productImage',this.selectedFile,this.selectedFile.name);
 
-      // fd.append('image',this.selectedFile,this.selectedFile.name);
       fd.append('productPrice',this.addProductReactiveForm.controls.productPrice.value);
       fd.append('productdescription',this.addProductReactiveForm.controls.description.value);
       fd.append('manufacturer',this.addProductReactiveForm.controls.manufacturer.value);
@@ -85,9 +91,23 @@ export class AddProductComponent implements OnInit {
       fd.append('quantity',this.addProductReactiveForm.controls.quantity.value);
       fd.append('categoryName',this.addProductReactiveForm.controls.category.value);
       fd.append('productName',this.addProductReactiveForm.controls.productName.value);
-      this.http.post("http://127.0.0.1:8000/products",fd)
+      this.http.post("https://pocket-pills.herokuapp.com/api/products",fd)
       .subscribe(res =>{
       console.log(res);
+      let fd =new FormData;
+      this.branchId = JSON.parse(localStorage.getItem('currentUserBranches'))[0]['branchId'];
+      
+      fd.append('pharmacyId',"400");
+      fd.append('productCode',this.addProductReactiveForm.controls.productCode.value);
+      fd.append('branchId',this.branchId);
+      fd.append('productQuantity',this.addProductReactiveForm.controls.quantity.value);
+      this.http.post("https://pocket-pills.herokuapp.com/api/branchproduct",fd)
+      .subscribe(res =>{
+      console.log(res);
+      alert("product added succeffully");
+      });
+     
+
     });
       // this.router.navigate(['/home']);
     }

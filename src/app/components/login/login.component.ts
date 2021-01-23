@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { TokenService } from 'src/app/services/token.service';
-
+import { DataService } from '../../data/data.service'; 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,11 +16,12 @@ export class LoginComponent implements OnInit {
   currentUser: any = [];
   currentUserBranch: any = [];
   temp :any;
-
   constructor(
     private router: Router,
     private authService: AuthServiceService,
-    private tokenService: TokenService) {}
+    private tokenService: TokenService,
+    private setAdmin: DataService,
+    private setUser: DataService) {}
 
   ngOnInit(): void {}
 
@@ -40,6 +41,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
 
           if(data['details']['userRole']==="admin"){
+            this.setAdmin.changeAdmin(1);
+            this.setUser.changeUser(0);
+
             this.router.navigate(['dashboard']);
             for(this.temp=0; this.temp<data['branchId'].length; this.temp++){
               this.currentUserBranch.push({
@@ -50,6 +54,9 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('currentUserBranches', JSON.stringify(this.currentUserBranch));
 
           }else if(data['details']['userRole']==="user"){
+            this.setUser.changeUser(1);
+            this.setAdmin.changeAdmin(0);
+
             this.router.navigate(['categories']);
           }else{
 

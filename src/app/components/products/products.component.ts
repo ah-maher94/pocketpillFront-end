@@ -32,8 +32,10 @@ export class ProductsComponent implements OnInit {
       try {
         const fd = new FormData;
         fd.append('categoryName', this.product);
-        this.http.post("http://127.0.0.1:8000/getproduct", fd)
+        this.http.post("https://pocket-pills.herokuapp.com/api/getproduct", fd)
           .subscribe(res => {
+            console.log('product: ',res);
+      
             this.productList = res;
             for (let index = 0; index < this.productList.length; index++) {
               this.clicked.push(0);
@@ -97,15 +99,14 @@ export class ProductsComponent implements OnInit {
     else {
       [productCode, branchId] = event.target.id.split(",");
     }
-    let userId = localStorage.getItem('userId');
-    // console.log(quantity,productCode,branchId,userId);
+    let userId = JSON.parse(localStorage.getItem('currentUser'))[0]['userId'];
     const fd = new FormData;
     fd.append('userId', userId);
     fd.append('productCode', productCode);
     fd.append('branchId', branchId);
     fd.append('productQuantity', quantity.toString());
 
-    this.http.post("http://127.0.0.1:8000/api/cartList", fd)
+    this.http.post("https://pocket-pills.herokuapp.com/api/cartList", fd)
       .subscribe(res => {
         this.producCodetList = res;
         for (let index = 0; index < this.producCodetList.length; index++) {
@@ -116,7 +117,7 @@ export class ProductsComponent implements OnInit {
 
         }
         if (this.found == 0) {
-          this.http.post("http://127.0.0.1:8000/getQuantity", fd)
+          this.http.post("https://pocket-pills.herokuapp.com/api/getQuantity", fd)
             .subscribe(res => {
               this.AvailableQuantity = res;
               console.log(this.AvailableQuantity[0]['productQuantity']);
@@ -128,7 +129,7 @@ export class ProductsComponent implements OnInit {
               console.log(this.available);
               
               if (this.available == 1) {
-                this.http.post("http://127.0.0.1:8000/appToCard", fd)
+                this.http.post("https://pocket-pills.herokuapp.com/api/appToCard", fd)
                 .subscribe(res => {
                   this.productList = res;
                   if (res['message'] == 'Success') {

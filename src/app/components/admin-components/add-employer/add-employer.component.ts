@@ -19,7 +19,7 @@ export class AddEmployerComponent implements OnInit {
     hiringerror;
     categorys:any;
     phonenumbererror:any;
-
+    branchId;
   constructor(private authService: AuthServiceService,
     private http: HttpClient,private profile: FormBuilder,private router: Router) { }
 
@@ -34,10 +34,14 @@ export class AddEmployerComponent implements OnInit {
       phonenumber: ['',[Validators.required]],
     });
     try {
-      await this.http.get("http://127.0.0.1:8000/category")
+      const fd =new FormData; // fd.append('image',this.selectedFile,this.selectedFile.name);
+      this.branchId = JSON.parse(localStorage.getItem('currentUserBranches'))[0]['branchId'];
+      
+      fd.append('branchId',this.branchId);
+      await this.http.post("https://pocket-pills.herokuapp.com/api/departmentName",fd)
       .subscribe(res =>{
       this.categorys=res;
-      console.log(res);
+     
     });
     } catch (error) {
       
@@ -67,7 +71,7 @@ console.log(this.addEmployerReactiveForm.controls.staffDepartment.value);
     {
       const fd =new FormData;
       // fd.append('image',this.selectedFile,this.selectedFile.name);
-      fd.append('branchId',"1");
+      fd.append('branchId',this.branchId);
       fd.append('staffPhone',this.addEmployerReactiveForm.controls.phonenumber.value);
 
 
@@ -76,9 +80,9 @@ console.log(this.addEmployerReactiveForm.controls.staffDepartment.value);
       fd.append('staffDepartment',this.addEmployerReactiveForm.controls.staffDepartment.value);
       fd.append('salary',this.addEmployerReactiveForm.controls.salary.value);
       fd.append('hiringDate',this.addEmployerReactiveForm.controls.hiring.value);
-      this.http.post("http://127.0.0.1:8000/staff",fd)
+      this.http.post("https://pocket-pills.herokuapp.com/api/staff",fd)
       .subscribe(res =>{
-      console.log(res);
+          alert('staff added succeffully');
     });
       // this.router.navigate(['/home']);
     }
