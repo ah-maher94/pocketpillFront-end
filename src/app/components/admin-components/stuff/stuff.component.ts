@@ -78,6 +78,13 @@ export class StuffComponent implements OnInit {
             i++;
           }
           // this.employees[this.index][key] = editedVal[i].value;
+           
+
+          this.http
+      .put('https://pocket-pills.herokuapp.com/api/staff/' + staffId ,this.editedValue)
+      .subscribe((res) => {
+
+      });
 
         }
       });

@@ -17,12 +17,13 @@ export class AdminProductsComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.authService.authUser();
     try {
+     
       await this.http
         .get('https://pocket-pills.herokuapp.com/api/category')
         .subscribe((res) => {
           this.categories = res;
         });
-
+     
     
 
       this.http
@@ -51,6 +52,13 @@ export class AdminProductsComponent implements OnInit {
       // this.products = res;
       });
   }
+//   get(branchId) {
+//   this.http
+//   .get('https://pocket-pills.herokuapp.com/api/products'+branchId)
+//   .subscribe((res) => {
+//     this.products = res;
+//   });
+// }
 
 
 }

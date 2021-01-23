@@ -12,6 +12,7 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 })
 export class CategoriesComponent implements OnInit {
   categorys: any;
+  products: Object;
   constructor(
     private authService: AuthServiceService,
     private http: HttpClient,private setCategory: DataService) { }
@@ -19,11 +20,12 @@ export class CategoriesComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.authService.authAdmin();
     try {
-      await this.http.get("http://127.0.0.1:8000/category")
+      await this.http.get("https://pocket-pills.herokuapp.com/api/category")
       .subscribe(res =>{
       this.categorys=res;
       // console.log(res);
     });
+
     } catch (error) {
       
     }

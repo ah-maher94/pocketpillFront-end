@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { DataService } from '../../data/data.service'; 
+import { AuthServiceService } from 'src/app/services/auth-service.service';
+
 
 @Component({
   selector: 'app-homepage',
@@ -6,10 +10,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
+  categories: any;
+  products: Object;
+  constructor(
+    private authService: AuthServiceService,
+    private http: HttpClient,private setCategory: DataService) { }
 
-  constructor() { }
+  async ngOnInit(): Promise<void> {
+    this.authService.authAdmin();
+    try {
+      await this.http.get("https://pocket-pills.herokuapp.com/api/category")
+      .subscribe(res =>{
+      this.categories=res;
+    });
 
-  ngOnInit(): void {
+    await this.http.get("https://pocket-pills.herokuapp.com/api/products")
+    .subscribe(res =>{
+    this.products=res;
+  });
+
+    } catch (error) {
+      
+    }
   }
-
 }

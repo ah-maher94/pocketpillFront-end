@@ -7,7 +7,7 @@
               <table class="table table-hover tm-table-small tm-product-table">
                 <thead>
                   <tr>
-                    <th scope="col">&nbsp;</th>
+                    <!-- <th scope="col">&nbsp;</th> -->
                     <th scope="col">PRODUCT NAME</th>
                     <th scope="col">Product Code</th>
                     <th scope="col">Category Name</th>
@@ -17,16 +17,16 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let product of products">
-                    <th scope="row"><input type="checkbox" /></th>
+                    <!-- <th scope="row"><input type="checkbox" /></th> -->
                     <td class="tm-product-name">{{product.productName}}</td>
                     <td>{{product.productCode}}</td>
                     <td>{{product.categoryName}}</td>
                     <td>{{product.productPrice}}</td>
                     <td class="text-center">
-                      <a href="#" class="tm-product-delete-link" id="deleteProduct" (click)="deleteProduct(product.productCode)">
+                      <a  class="tm-product-delete-link" id="deleteProduct" (click)="deleteProduct(product.productCode)">
                         <i class="far fa-trash-alt tm-product-delete-icon"></i>
                       </a>
-                      <a href="#" class="tm-product-delete-link">
+                      <a  class="tm-product-delete-link" >
                         <i class="far fa-edit tm-product-delete-icon"></i>
                       </a>
                     </td>
@@ -39,9 +39,7 @@
             <a
               routerLink="/add-product"
               class="btn btn-primary btn-block text-uppercase mb-3">Add new product</a>
-            <button class="btn btn-primary btn-block text-uppercase">
-              Delete selected products
-            </button>
+  
           </div>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-block-col">

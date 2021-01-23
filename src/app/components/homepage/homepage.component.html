@@ -399,38 +399,21 @@
               <div class="title-icon">
                 <img class="mb-10" src="assets/images/title-icon.png" alt="">
               </div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem autem<br> voluptatem obcaecati!</p>
+              <p>This section show some categories from all branches In PocketPills website  <br> like makeup ,medicine and mom care.</p>
             </div>
           </div>
         </div>
         <div class="section-content">
           <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4 mb-30">
-              <div class="p-20 bg-white">
-                <img src="assets/images/home-page/vitaminspage.png" alt="">
-                <h3 class=""><a href="#">Medications</a></h3>
+            <div class="col-xs-12 col-sm-6 col-md-4 mb-30" *ngFor="let category of categories ; let i=index">
+              <div class="p-20 bg-white" *ngIf="i<3">
+                <img [src]="category['categoryImage']" alt="">
+                <h3 class=""><a [routerLink]="['/categories']">{{category['categoryName']}}</a></h3>
                 <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit tem autem voluptatem obcaecati.</p>
-                <a href="#" class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2">Read More</a>
+                <a [routerLink]="['/categories']" class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2">Read More</a>
               </div>
             </div>
 
-            <div class="col-xs-12 col-sm-6 col-md-4 mb-30">
-              <div class="p-20 bg-white">
-                <img src="assets/images/home-page/beauty.png" alt="">
-                <h3 class=""><a href="#">Beauty </a></h3>
-                <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit tem autem voluptatem obcaecati.</p>
-                <a href="#" class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2">Read More</a>
-              </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-6 col-md-4 mb-30">
-              <div class="p-20 bg-white">
-                <img src="assets/images/home-page/mom.png" alt="">
-                <h3 class=""><a href="#">Mother Care</a></h3>
-                <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit tem autem voluptatem obcaecati.</p>
-                <a href="#" class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2">Read More</a>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -899,22 +882,33 @@
     </section>
 
     <!-- Divider: Clients -->
-    <section class="clients bg-theme-colored">
-      <div class="container pt-10 pb-0">
+    <section>
+      <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <!-- Section: Clients -->
-            <div class="owl-carousel" id="home-clients">
-              <div> <a href="#"><img src="assets/images/home-page/products/2.jpg" alt=""></a></div>
-              <div> <a href="#"><img src="assets/images/home-page/products/2.jpg" alt=""></a></div>
-              <div> <a href="#"><img src="assets/images/home-page/products/3.png" alt=""></a></div>
-              <div> <a href="#"><img src="assets/images/home-page/products/4.png" alt=""></a></div>
-              <div> <a href="#"><img src="assets/images/home-page/products/5.png" alt=""></a></div>
-              <div> <a href="#"><img src="assets/images/home-page/products/6.png" alt=""></a></div>
-              <div> <a href="#"><img src="assets/images/home-page/products/3.png" alt=""></a></div>
-              <div> <a href="#"><img src="assets/images/home-page/products/4.png" alt=""></a></div>
-              <div> <a href="#"><img src="assets/images/home-page/products/5.png" alt=""></a></div>
-              <div> <a href="#"><img src="assets/images/home-page/products/3.png" alt=""></a></div>
+            <div class="owl-carousel" id="categories-popular" data-nav="true">
+              <div class="col-md-3 col-sm-4"  *ngFor="let product of products ; let i=index">
+                <div *ngIf="i<4">
+                <div class="carousel--item">
+                  <img
+                    class="carousel--item__img"
+                    [src]="product['productImage']"
+                    alt="item"
+                  />
+                  <div class="carousel--item__details">
+                    <p class="carousel--item__details--title">{{product['productName']}}</p>
+                    <p class="carousel--item__details--title">Browse Products<a [routerLink]="['/products']"><i class="fa fa-arrow-circle-right fa-2x" style="margin-left:5px" aria-hidden="true" (click)='product($event)' [value]='product["productName"]'>
+                    </i></a></p>
+                  </div>
+                </div>
+                </div>
+              </div>
+              <!-- <div class="item"><img src="assets/images/categories/nivea.png" alt=""></div>
+              <div class="item"><img src="assets/images/categories/ListerineMouthwash.png" alt=""></div>
+              <div class="item"><img src="assets/images/categories/dettole2.png" alt=""></div>
+              <div class="item"><img src="assets/images/categories/nivea.png" alt=""></div>
+              <div class="item"><img src="assets/images/categories/ListerineMouthwash.png" alt=""></div>
+            -->
             </div>
           </div>
         </div>

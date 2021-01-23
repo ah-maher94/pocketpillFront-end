@@ -91,23 +91,27 @@
             <div class="col-md-9">
               <div class="products">
                 <div class="row multi-row-clearfix">
-                  <div class="col-sm-6 col-md-4 col-lg-4 mb-30">
+                  <div class="col-sm-6 col-md-4 col-lg-4 mb-30" *ngFor="let pharmacy of pharmacies">
                     <div class="product">
-                      <div class="product-thumb"> <img alt="" src="assets/images/pharmacies/elezaby.png" class="img-responsive img-fullwidth">
+                      <!-- <div class="product-thumb"> <img alt="" src="assets/images/pharmacies/elezaby.png" class="img-responsive img-fullwidth"> -->
+                        <div class="product-thumb"> <img alt="" [src]="pharmacy['pharmacyImage']" class="img-responsive img-fullwidth">
+                      
+                      
                         <div class="overlay"></div>
                       </div>
                       <div class="product-details text-center">
-                        <a href="#"><h5 class="product-title">Elezaby Pharmacy</h5></a>
+                        <a href="#"><h5 class="product-title">{{ pharmacy["pharmacyName"] }}
+                        </h5></a>
                         <p>Together for Better Health </p>
-                        <p>19600</p>
+                     
 
-                        <div class="widget no-border m-0">
+                         <!-- <div class="widget no-border m-0">
                             <ul class="styled-icons icon-dark icon-circled icon-sm">
                               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                               <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                             </ul>
-                          </div>
+                          </div>  -->
 
                       </div>
                     </div>
@@ -116,145 +120,10 @@
 
 
 
-                  <div class="col-sm-6 col-md-4 col-lg-4 mb-30">
-                    <div class="product">
-                      <div class="product-thumb"> <img alt="" src="assets/images/pharmacies/roshdy.png" class="img-responsive img-fullwidth">
-                        <div class="overlay"></div>
-                      </div>
-                      <div class="product-details text-center">
-                        <a href="#"><h5 class="product-title">Roshdy Pharmacy</h5></a>
-                        <p>Together for Better Health </p>
-                        <p>19666</p>
-                        <div class="widget no-border m-0">
-                            <ul class="styled-icons icon-dark icon-circled icon-sm">
-                              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-md-4 col-lg-4 mb-30">
-                    <div class="product">
-                      <div class="product-thumb"> <img alt="" src="assets/images/pharmacies/seif.png" class="img-responsive img-fullwidth">
-                        <div class="overlay"></div>
-                      </div>
-                      <div class="product-details text-center">
-                        <a href="#"><h5 class="product-title">Seif Pharmacy</h5></a>
-                        <p>Together for Better Health </p>
-                        <p>19119</p>
-                        <div class="widget no-border m-0">
-                            <ul class="styled-icons icon-dark icon-circled icon-sm">
-                              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-md-4 col-lg-4 mb-30">
-                    <div class="product">
-                      <div class="product-thumb"> <img alt="" src="assets/images/pharmacies/masr.png" class="img-responsive img-fullwidth">
-                        <div class="overlay"></div>
-                      </div>
-                      <div class="product-details text-center">
-                        <a href="#"><h5 class="product-title">Masr Pharmacy</h5></a>
-                        <p>Together for Better Health </p>
-                        <p>19110</p>
-                        <div class="widget no-border m-0">
-                            <ul class="styled-icons icon-dark icon-circled icon-sm">
-                              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-md-4 col-lg-4 mb-30">
-                    <div class="product">
-                      <div class="product-thumb"> <img alt="" src="assets/images/pharmacies/elezaby.png" class="img-responsive img-fullwidth">
-                        <div class="overlay"></div>
-                      </div>
-                      <div class="product-details text-center">
-                        <a href="#"><h5 class="product-title">Elezaby Pharmacy</h5></a>
-                        <p>Together for Better Health </p>
-                        <p>19600</p>
-
-                        <div class="widget no-border m-0">
-                            <ul class="styled-icons icon-dark icon-circled icon-sm">
-                              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                          </div>
-
-                      </div>
-                    </div>
-                  </div>
+            
 
 
 
-
-                  <div class="col-sm-6 col-md-4 col-lg-4 mb-30">
-                    <div class="product">
-                      <div class="product-thumb"> <img alt="" src="assets/images/pharmacies/roshdy.png" class="img-responsive img-fullwidth">
-                        <div class="overlay"></div>
-                      </div>
-                      <div class="product-details text-center">
-                        <a href="#"><h5 class="product-title">Roshdy Pharmacy</h5></a>
-                        <p>Together for Better Health </p>
-                        <p>19666</p>
-                        <div class="widget no-border m-0">
-                            <ul class="styled-icons icon-dark icon-circled icon-sm">
-                              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-md-4 col-lg-4 mb-30">
-                    <div class="product">
-                      <div class="product-thumb"> <img alt="" src="assets/images/pharmacies/seif.png" class="img-responsive img-fullwidth">
-                        <div class="overlay"></div>
-                      </div>
-                      <div class="product-details text-center">
-                        <a href="#"><h5 class="product-title">Seif Pharmacy</h5></a>
-                        <p>Together for Better Health </p>
-                        <p>19119</p>
-                        <div class="widget no-border m-0">
-                            <ul class="styled-icons icon-dark icon-circled icon-sm">
-                              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-md-4 col-lg-4 mb-30">
-                    <div class="product">
-                      <div class="product-thumb"> <img alt="" src="assets/images/pharmacies/masr.png" class="img-responsive img-fullwidth">
-                        <div class="overlay"></div>
-                      </div>
-                      <div class="product-details text-center">
-                        <a href="#"><h5 class="product-title">Masr Pharmacy</h5></a>
-                        <p>Together for Better Health </p>
-                        <p>19110</p>
-                        <div class="widget no-border m-0">
-                            <ul class="styled-icons icon-dark icon-circled icon-sm">
-                              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
 
                 <div class="row">
                   <div class="col-md-12">
