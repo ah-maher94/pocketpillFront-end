@@ -26,7 +26,6 @@ export class AdminProductsComponent implements OnInit {
       const fd =new FormData; 
       this.branchId = JSON.parse(localStorage.getItem('currentUserBranches'))[0]['branchId'];
       fd.append('branchId',this.branchId);
-      console.log(fd);
       await this.http
         .get('https://pocket-pills.herokuapp.com/api/category')
         .subscribe((res) => {
@@ -36,7 +35,7 @@ export class AdminProductsComponent implements OnInit {
     
 
       this.http
-        .get('https://pocket-pills.herokuapp.com/api/products')
+        .post('https://pocket-pills.herokuapp.com/api/getProductBranch',fd)
         .subscribe((res) => {
           this.products = res;
         });

@@ -31,6 +31,9 @@ export class AuthServiceService {
       if(this.currentUser[0]['userRole'] == "user"){
         this.router.navigate(['categories']);
       }
+      if(this.currentUser[0]['userRole'] == "superAdmin"){
+        this.router.navigate(['superadmin']);
+      }
     }else{
       this.router.navigate(['categories']);
     }
@@ -41,6 +44,9 @@ export class AuthServiceService {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
       if(this.currentUser[0]['userRole'] == "admin"){
         this.router.navigate(['profile']);
+      }
+      if(this.currentUser[0]['userRole'] == "superAdmin"){
+        this.router.navigate(['superadmin']);
       }
     }else{
       this.router.navigate(['categories']);

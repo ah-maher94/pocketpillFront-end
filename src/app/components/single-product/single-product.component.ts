@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/data/data.service';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -10,10 +11,14 @@ export class SingleProductComponent implements OnInit {
   currentUser: any= [];
   userId: any;
   productInfo: any = [];
-  constructor(private productService: ProductsService) { }
+  productCode;
+  constructor(private productService: ProductsService
+              ,private productCodeService: DataService,) { }
 
   ngOnInit(): void {
-    this.productService.getProductInfo(111)
+    this.productCodeService.productCodeTrigger.subscribe(result => {
+      this.productCode = result;})
+    this.productService.getProductInfo(this.productCode)
     .subscribe((data) => {
       console.log(data);
       this.productInfo = data;

@@ -33,6 +33,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { SingleProductComponent } from './components/single-product/single-product.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
+import { SuperAdminNavComponent } from './components/superAdmincomponent/super-admin-nav/super-admin-nav.component';
+import { SuperDashboardComponent } from './components/superAdmincomponent/super-dashboard/super-dashboard.component';
+import { AddAdminComponent } from './components/superAdmincomponent/add-admin/add-admin.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +68,10 @@ import { OrderSuccessComponent } from './components/order-success/order-success.
     RegisterComponent,
     SingleProductComponent,
     ShoppingCartComponent,
-    OrderSuccessComponent
+    OrderSuccessComponent,
+    SuperAdminNavComponent,
+    SuperDashboardComponent,
+    AddAdminComponent
   ],
   imports: [
     BrowserModule,

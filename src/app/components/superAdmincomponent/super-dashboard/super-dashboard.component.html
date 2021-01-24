@@ -1,0 +1,29 @@
+<div class="admin-pharmacy">
+    <div class="container">
+        <div class="row tm-content-row">
+            <div class="col-12 tm-block-col">
+                <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
+                    <h2 class="tm-block-title">Orders</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">pharmacy Name</th>
+                                <th scope="col">pharmacy Country</th>
+                                <th scope="col">pharmacy  City</th>
+                                <th scope="col">pharmacy Street</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let order of orders">
+                                <th scope="row"><b>{{order.pharmacyName}}</b></th>
+                                <td><b>{{order.branchCountry}}</b></td>
+                                <td><b>{{order.branchCity}}</b></td>
+                                <td><b>{{order.branchStreet}}</b></td>
+                            </tr>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

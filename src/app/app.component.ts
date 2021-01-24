@@ -9,13 +9,18 @@ export class AppComponent {
   title = 'ecommerce-app';
   adminRoute;
   UserRoute;
-
-  constructor(private getUser: DataService,private getAdmin: DataService){}
+  superAdminRoute;
+  constructor(private getUser: DataService
+              ,private getAdmin: DataService
+              ,private getSupetAdmin: DataService){}
   ngOnInit()
   {
     this.getUser.loginUserTrigger.subscribe(result => {
       this.UserRoute = result;})
     this.getAdmin.loginAdminTrigger.subscribe(result => {
       this.adminRoute = result;})
+      this.getSupetAdmin.loginSuperAdminTrigger.subscribe(result =>{
+        this.superAdminRoute=result;
+      })
   }
 }

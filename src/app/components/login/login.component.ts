@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
     private authService: AuthServiceService,
     private tokenService: TokenService,
     private setAdmin: DataService,
+    private setSuperAdmin: DataService,
+
     private setUser: DataService) {}
 
   ngOnInit(): void {}
@@ -43,6 +45,7 @@ export class LoginComponent implements OnInit {
           if(data['details']['userRole']==="admin"){
             this.setAdmin.changeAdmin(1);
             this.setUser.changeUser(0);
+            this.setSuperAdmin.changeSuperAdmin(0)
 
             this.router.navigate(['dashboard']);
             for(this.temp=0; this.temp<data['branchId'].length; this.temp++){
@@ -56,10 +59,14 @@ export class LoginComponent implements OnInit {
           }else if(data['details']['userRole']==="user"){
             this.setUser.changeUser(1);
             this.setAdmin.changeAdmin(0);
+            this.setSuperAdmin.changeSuperAdmin(0)
 
             this.router.navigate(['categories']);
-          }else{
-
+          }else if(data['details']['userRole']==="superAdmin"){
+              this.setAdmin.changeAdmin(0);
+              this.setUser.changeUser(0);
+              this.setSuperAdmin.changeSuperAdmin(1);
+              this.router.navigate(['superdashboard']);
           }
 
         }

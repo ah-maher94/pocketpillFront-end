@@ -2,6 +2,9 @@
 <div *ngIf="UserRoute">
     <app-header></app-header>
 </div>
+<div *ngIf="superAdminRoute">
+    <app-super-admin-nav></app-super-admin-nav>
+</div>
 <div *ngIf="adminRoute">
     <app-nav></app-nav>
 </div>
@@ -10,9 +13,13 @@
 
     <app-footer></app-footer>
 </div>
+
 <div *ngIf="adminRoute">
     <app-admin-footer></app-admin-footer>
 </div> 
+<div *ngIf="superAdminRoute">
+    <app-admin-footer></app-admin-footer>
+</div>
 
 
 

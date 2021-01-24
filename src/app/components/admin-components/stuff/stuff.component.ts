@@ -28,12 +28,12 @@ export class StuffComponent implements OnInit {
       const fd =new FormData; 
       this.branchId = JSON.parse(localStorage.getItem('currentUserBranches'))[0]['branchId'];
       fd.append('branchId',this.branchId);
-      console.log(fd);
+      console.log('branchid: ',this.branchId);
       
 
      await this.http
     //  .get('https://pocket-pills.herokuapp.com/api/staff/'+ fd)
-     .get('https://pocket-pills.herokuapp.com/api/staff')
+     .post('https://pocket-pills.herokuapp.com/api/getStaffBranch',fd)
      .subscribe((res) => {
           this.employees = res;
         });

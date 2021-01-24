@@ -21,6 +21,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { SingleProductComponent } from './components/single-product/single-product.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
+import { SuperDashboardComponent } from './components/superAdmincomponent/super-dashboard/super-dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -42,6 +43,7 @@ const routes: Routes = [
   {path:'add-catagory',component:AddCatagoryComponent},
   {path:'profile',component:ProfileComponent},
   {path:'dashboard',component:DashboardComponent },
+  {path:'superdashboard',component:SuperDashboardComponent },
   {path:'product',component:SingleProductComponent },
   {path:'shopping-cart',component:ShoppingCartComponent },
   {path:'order-success',component:OrderSuccessComponent }
