@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../data/data.service';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 @Component({
@@ -20,9 +21,14 @@ export class ProductsComponent implements OnInit {
   found = 0;
   AvailableQuantity: any;
   available = 0;
+  updateQuantity=0;
+  testTemplet=1;
   constructor(
     private authService: AuthServiceService,
-    private diplayedProduct: DataService, private http: HttpClient) { }
+    private diplayedProduct: DataService, 
+    private productCodeService: DataService,
+    private http: HttpClient,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.authService.authAdmin();
@@ -52,45 +58,42 @@ export class ProductsComponent implements OnInit {
 
 
     this.clicked[i] = 1;
+    // this.updateQuantity=1;
     this.index = i;
     // this.changeQuantity(i);
     setTimeout(() => {
       this.qtyminus = document.getElementsByClassName("qtyminus");
-      this.qtyminus[0].addEventListener('click', function () {
-        this.inputvalue = document.getElementsByClassName("qty");
-        
-        this.modifiedvalue = this.inputvalue[0].value;
-        if (this.modifiedvalue > 1) {
-          this.inputvalue[0].value = this.modifiedvalue - 1;
-        }
-      })
-      this.qtyplus = document.getElementsByClassName("qtyplus");
-      this.qtyplus[0].addEventListener('click', function () {
-        //     // console.log(i);
-
-        this.inputvalue = document.getElementsByClassName("qty");
-        // console.log(this.inputvalue);
-        this.modifiedvalue = parseInt(this.inputvalue[0].value);
-        if (this.modifiedvalue > 0) {
-          this.inputvalue[0].value = this.modifiedvalue + 1;
-        }
-      })
+      console.log(this.qtyminus.length);
+      for (let index = 0; index < this.qtyminus.length; index++) {
+        this.qtyminus[index].addEventListener('click', function () {
+          this.inputvalue = document.getElementsByClassName("qty");
+          
+          this.modifiedvalue = this.inputvalue[index].value;
+          if (this.modifiedvalue > 1) {
+            this.inputvalue[index].value = this.modifiedvalue - 1;
+          }
+        })
+        this.qtyplus = document.getElementsByClassName("qtyplus");
+        this.qtyplus[index].addEventListener('click', function () {
+          //     // console.log(i);
+  
+          this.inputvalue = document.getElementsByClassName("qty");
+          // console.log(this.inputvalue);
+          this.modifiedvalue = parseInt(this.inputvalue[index].value);
+          if (this.modifiedvalue > 0) {
+            this.inputvalue[index].value = this.modifiedvalue + 1;
+          }
+        })
+      }
+      
+   
     }, 1000);
 
-    // console.log(i);
   }
-  // cart()
-  // {
-  //   if(this.clicked==0)
-  //   {
-  //     return true;
-  //   }
-  //   // console.log('sayed');
-
-  // }
-  getQuantity(event, i) {
+  getQuantity(event, i,pc,pb) {
     let productCode, branchId;
     this.inputvalue = document.getElementsByClassName("qty");
+    console.log(event.target);
     let quantity = parseInt(this.inputvalue[0].value);
     if (event.target.parentNode.id != "") {
       [productCode, branchId] = event.target.parentNode.id.split(",");
@@ -120,7 +123,6 @@ export class ProductsComponent implements OnInit {
           this.http.post("https://pocket-pills.herokuapp.com/api/getQuantity", fd)
             .subscribe(res => {
               this.AvailableQuantity = res;
-              console.log(this.AvailableQuantity[0]['productQuantity']);
               if (this.AvailableQuantity[0]['productQuantity'] >= quantity) {
                 this.available = 1;
 
@@ -136,6 +138,7 @@ export class ProductsComponent implements OnInit {
                     alert('item added to card successfully');
                   }
                   this.clicked[i] = 0;
+                  this.updateQuantity=0;
                 });
               }
               else{
@@ -153,5 +156,27 @@ export class ProductsComponent implements OnInit {
       })
 
 
+  }
+  displayAddToCard()
+  {
+    let userId = JSON.parse(localStorage.getItem('currentUser'))[0]['userId'];
+    const fd = new FormData;
+    fd.append('userId', userId);
+    this.http.post("https://pocket-pills.herokuapp.com/api/cartList", fd)
+    .subscribe(res => {
+      this.producCodetList = res;
+      for (let index = 0; index < this.producCodetList.length; index++) {
+        if (this.producCodetList[index]['productCode'] == this.productList[index]['productCode']) {
+          this
+         
+          this.found = 1;
+        }
+
+      }});
+  }
+  singleProduct(productCode)
+  {
+    this.productCodeService.changeProductCode(productCode);
+    this.router.navigate(['product']);
   }
 }

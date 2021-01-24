@@ -10,42 +10,52 @@
             </div>
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
-                <form action="" class="tm-edit-product-form">
+                <form [formGroup]="addCategoryReactiveForm" (ngSubmit)="handleReactiveFormSubmit()" class="tm-edit-product-form">
                   <div class="form-group mb-3">
                     <label
-                      for="name"
+                      for="categoryName"
                       >Catagory Name
                     </label>
                     <input
                       id="name"
-                      name="name"
+                      name="categoryName"
                       type="text"
                       class="form-control validate"
+                      formControlName="categoryName"
                       required
                     />
+                    <div
+                    class="alert alert-danger"
+                    *ngIf="registerFormControl.categoryName.touched && !registerFormControl.categoryName.valid"
+                    >
+                        <div *ngIf="registerFormControl.categoryName.errors.required" style="color: red;">Category Name is required.</div>     
+                    </div>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label
+                      for="categoryImage"
+                      >add Image Link
+                    </label>
+                    <input
+                      id="categoryImage"
+                      name="categoryImage"
+                      type="text"
+                      class="form-control validate"
+                      formControlName="categoryImage"
+                      required
+                    />
+                    <div
+                    class="alert alert-danger"
+                    *ngIf="registerFormControl.categoryImage.touched && !registerFormControl.categoryImage.valid"
+                    >
+                        <div *ngIf="registerFormControl.categoryImage.errors.required" style="color: red;">image is required.</div>     
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Category</button>
                   </div>
               </form>
           </div>
-              <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-                <div class="tm-product-img-dummy mx-auto">
-                  <i
-                    class="fas fa-cloud-upload-alt tm-upload-icon"
-                    onclick="document.getElementById('fileInput').click();"
-                  ></i>
-                </div>
-                <div class="custom-file mt-3 mb-3">
-                  <input id="fileInput" type="file" style="display:none;" />
-                  <input
-                    type="button"
-                    class="btn btn-primary btn-block mx-auto"
-                    value="UPLOAD Catagory IMAGE"
-                    onclick="document.getElementById('fileInput').click();"
-                  />
-                </div>
-              </div>
-              <div class="col-12">
-                <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Catagory</button>
-              </div>
               
           </div>
         </div>

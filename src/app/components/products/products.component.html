@@ -33,7 +33,7 @@
                         <div class="left-block">
                           <a class="product_img_link" href="singleproduct.html" target="_blank" title="Affiliates banner 300x250">
                             <img class="img-responsive" [src]="product['productImage']" border="0" alt="Affiliates banner 300x250" /></a>
-                          <a href="singleproduct.html" target="_blank" class="quick-view btn-tooltip"><i class="fa fa-eye"></i></a>
+                          <a class="quick-view btn-tooltip" (click)="singleProduct(product['productCode'])"><i class="fa fa-eye" (click)="singleProduct(product['productCode'])"></i></a>
                           <span class="label-new label">New</span>
                         </div>
                         <div class="right-block">
@@ -67,8 +67,15 @@
                                   <div class="qtyplus">+</div>
                                 </form>
                               </ng-template>
+                              <ng-template #updateQuantity>
+                                <form action="#" class="display-flex">
+                                  <div class="qtyminus">-</div>
+                                  <input type="text" name="quantity" value="1" class="qty" id="{{i}}" />
+                                  <div class="qtyplus">+</div>
+                                </form>
+                              </ng-template>
                               <a class="btn-tooltip addToWishlist"><i class="fa fa-heart"></i></a>
-                              <a (click)="getQuantity($event,i)" id="{{[product['productCode'],product['branchid']]}}"class="add_to_compare compare btn-tooltip"><i class="fa fa-refresh"></i></a>
+                              <a (click)="getQuantity($event,i,product['productCode'],product['branchid'])" id="{{[product['productCode'],product['branchid']]}}"class="add_to_compare compare btn-tooltip"><i class="fa fa-refresh"></i></a>
                             </div>
                           </div>
                         </div>
