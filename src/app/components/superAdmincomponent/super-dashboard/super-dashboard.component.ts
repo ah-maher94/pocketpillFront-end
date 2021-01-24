@@ -8,7 +8,7 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
   styleUrls: ['./super-dashboard.component.css']
 })
 export class SuperDashboardComponent implements OnInit {
-  orders: Object;
+  orders: any;
 
   constructor(private http: HttpClient,
     private authService: AuthServiceService) { }
