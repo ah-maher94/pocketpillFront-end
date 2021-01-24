@@ -8,7 +8,8 @@
           <div class="title-icon">
             <img class="mb-10" src="assets/images/title-icon.png" alt="">
           </div>
-          <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem autem<br> voluptatem obcaecati!</p>
+          <p class="">
+            This section shows all categories form all pharmacies<br>like mom care ,medicine and another categories</p>
         </div>
       </div>
     </div>
@@ -55,15 +56,45 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h4 class="mb-20">Popular</h4>
+        <h4 class="mb-20">Popular Categories</h4>
         <div class="owl-carousel" id="categories-popular" data-nav="true">
-          <div class="item"><img src="assets/images/categories/dettole.png" alt=""></div>
-          <div class="item"><img src="assets/images/categories/nivea.png" alt=""></div>
+          <div
+            class="col-md-3 col-sm-4"
+            *ngFor="let category of categorys; let i = index"
+          >
+            <div *ngIf="i < 4">
+              <div class="carousel--item">
+                <img
+                  class="carousel--item__img"
+                  [src]="category['categoryImage']"
+                  alt="item"
+                />
+                <div class="carousel--item__details">
+                  <p class="carousel--item__details--title">
+                    {{ category["categoryName"] }}
+                  </p>
+                  <p class="carousel--item__details--title">
+                    Browse Products<a [routerLink]="['/categories']"
+                      ><i
+                        class="fa fa-arrow-circle-right fa-2x"
+                        style="margin-left: 5px"
+                        aria-hidden="true"
+                        (click)="product($event)"
+                        [value]="category['categoryName']"
+                      >
+                      </i
+                    ></a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="item"><img src="assets/images/categories/nivea.png" alt=""></div>
           <div class="item"><img src="assets/images/categories/ListerineMouthwash.png" alt=""></div>
           <div class="item"><img src="assets/images/categories/dettole2.png" alt=""></div>
           <div class="item"><img src="assets/images/categories/nivea.png" alt=""></div>
           <div class="item"><img src="assets/images/categories/ListerineMouthwash.png" alt=""></div>
-        </div>
+        --></div>
       </div>
     </div>
   </div>

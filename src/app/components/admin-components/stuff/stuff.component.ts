@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient}from '@angular/common/http'; 
+import { FormGroup, FormControl,FormBuilder,Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
@@ -15,25 +17,47 @@ export class StuffComponent implements OnInit {
   editedValue: Array<string>;
   numberOfInput = 50;
   changeInput: Array<string> = [];
-  constructor(private http: HttpClient,
-    private authService: AuthServiceService) { }
+  branchId: any;
+  constructor(private authService: AuthServiceService,
+    private http: HttpClient,private profile: FormBuilder,private router: Router) { }
+
 
   async ngOnInit(): Promise<void> {
     this.authService.authUser();
     try {
-      await this.http
-        .get('https://pocket-pills.herokuapp.com/api/staff')
-        .subscribe((res) => {
+      const fd =new FormData; 
+      this.branchId = JSON.parse(localStorage.getItem('currentUserBranches'))[0]['branchId'];
+      fd.append('branchId',this.branchId);
+      console.log(fd);
+      
+
+     await this.http
+    //  .get('https://pocket-pills.herokuapp.com/api/staff/'+ fd)
+     .get('https://pocket-pills.herokuapp.com/api/staff')
+     .subscribe((res) => {
           this.employees = res;
         });
 
-      await this.http
-        .get('https://pocket-pills.herokuapp.com/api/staff')
-        .subscribe((res) => {
-          this.departments = res;
+       
+     
+          await this.http.post("https://pocket-pills.herokuapp.com/api/departmentName",fd)
+          .subscribe(res =>{
+          this.departments=res;
+         
         });
-    } catch (error) { }
-  }
+        } catch (error) {
+          
+        }
+      }
+
+
+  //     await this.http
+  //       .get('https://pocket-pills.herokuapp.com/api/staff')
+  //       .subscribe((res) => {
+  //         this.departments = res;
+  //       });
+  //   } catch (error) { }
+  // }
 
   deleteEmployee(staffId) {
     this.http

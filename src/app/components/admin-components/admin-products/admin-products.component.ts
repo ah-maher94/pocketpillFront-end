@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient}from '@angular/common/http'; 
+import { FormGroup, FormControl,FormBuilder,Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
+
 
 @Component({
   selector: 'app-admin-products',
@@ -10,14 +13,20 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 export class AdminProductsComponent implements OnInit {
   categories: any;
   products: any;
+  branchId: any;
 
-  constructor(private http: HttpClient, 
-    private authService: AuthServiceService) {}
+  constructor(private authService: AuthServiceService,
+    private http: HttpClient,private profile: FormBuilder,private router: Router) { }
+
 
   async ngOnInit(): Promise<void> {
     this.authService.authUser();
     try {
      
+      const fd =new FormData; 
+      this.branchId = JSON.parse(localStorage.getItem('currentUserBranches'))[0]['branchId'];
+      fd.append('branchId',this.branchId);
+      console.log(fd);
       await this.http
         .get('https://pocket-pills.herokuapp.com/api/category')
         .subscribe((res) => {

@@ -35,9 +35,9 @@
                     <a class="tm-product-delete-link" id="deleteEmployee" (click)="deleteEmployee(employee.staffId)">
                       <i class="far fa-trash-alt tm-product-delete-icon"></i>
                     </a>
-                    <a class="tm-product-delete-link" id="editEmployee" (click)="editEmployee(employee.staffId,value)">
+                    <!-- <a class="tm-product-delete-link" id="editEmployee" (click)="editEmployee(employee.staffId,value)">
                       <i class="far fa-edit tm-product-delete-icon"></i>
-                    </a>
+                    </a> -->
                   </td>
                 </tr>
               </tbody>
@@ -55,7 +55,7 @@
               <tbody>
                 <tr *ngFor="let department of departments">
                   <td class="tm-product-name">
-                    {{ department.staffDepartment }}
+                    {{ department.departmentName }}
                   </td>
                 </tr>
               </tbody>

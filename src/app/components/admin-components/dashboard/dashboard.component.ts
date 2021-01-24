@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
       this.authService.authUser();
       try {
       
-     await this.http.get("https://pocket-pills.herokuapp.com/api/customer/orders").subscribe(res=>{
+     await this.http.get("https://pocket-pills.herokuapp.com/api/pharmacy/orders").subscribe(res=>{
        this.orders=res;
      });
 
