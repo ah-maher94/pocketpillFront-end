@@ -50,6 +50,7 @@ div:nth-child(7) {
 /* container */
 
 .container {
+    background-color: #f7f7f7;
     padding: 50px;
 }
 
@@ -215,4 +216,8 @@ form.form1 {
 .signp .signlink a:hover{
     color: #ccc !important;
   
+}
+.register{
+    transform: translateX(250px);
+   
 }

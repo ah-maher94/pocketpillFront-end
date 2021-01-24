@@ -50,6 +50,7 @@ div:nth-child(7) {
 /* container */
 
 .container {
+    background-color: #f7f7f7;
     padding: 50px;
 }
 
@@ -62,6 +63,7 @@ body {
 
 .main {
     background-color: #FFFFFF;
+    
     width: 500px;
     margin: 7em auto;
     border-radius: 1.5em;
@@ -224,4 +226,9 @@ form.form1 {
 
 .userType{
     color: black;
+}
+
+.login{
+    transform: translateX(220px);
+   
 }
