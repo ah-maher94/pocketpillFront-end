@@ -10,7 +10,10 @@ export class OrdersService {
 
 
   currentUser: any = [];
+  currentBranch: any = [];
   userId: any;
+  branchId: any;
+
   constructor(private http: HttpClient) { }
 
   getUserOrders(){
@@ -20,4 +23,25 @@ export class OrdersService {
       return this.http.get(`${this.baseUrl}/customer/${this.userId}/orders`);
     }
   }
+
+  getAdminOrders(){
+    if(localStorage.getItem('currentUser')){
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      this.userId = this.currentUser[0]['userId'];
+    }
+    if(localStorage.getItem('currentUserBranches')){
+      this.currentBranch = JSON.parse(localStorage.getItem('currentUserBranches'));
+      this.branchId = this.currentBranch[0]['branchId'];
+    }
+    return this.http.get(`${this.baseUrl}/pharmacy/${this.branchId}/orders`);
+  }
+
+  // getAdminOrder(invNo, productCode){
+  //   if(localStorage.getItem('currentUserBranches')){
+  //     this.currentBranch = JSON.parse(localStorage.getItem('currentUserBranches'));
+  //     this.branchId = this.currentBranch[0]['branchId'];
+  //   }
+  //   return this.http.get(`${this.baseUrl}/pharmacy/${this.branchId}/${invNo}/${productCode}`);
+  // }
+
 }
