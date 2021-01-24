@@ -18,6 +18,9 @@ import {ProfileComponent} from './components/admin-components/profile/profile.co
 import {DashboardComponent} from './components/admin-components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { SingleProductComponent } from './components/single-product/single-product.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { OrderSuccessComponent } from './components/order-success/order-success.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -38,8 +41,11 @@ const routes: Routes = [
   {path:'add-product',component:AddProductComponent},
   {path:'add-catagory',component:AddCatagoryComponent},
   {path:'profile',component:ProfileComponent},
-  {path:'dashboard',component:DashboardComponent }
-  
+  {path:'dashboard',component:DashboardComponent },
+  {path:'product',component:SingleProductComponent },
+  {path:'shopping-cart',component:ShoppingCartComponent },
+  {path:'order-success',component:OrderSuccessComponent }
+
 ];
 
 @NgModule({

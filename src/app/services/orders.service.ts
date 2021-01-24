@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class OrdersService {
 
-  private baseUrl = 'http://127.0.0.1:8000/api';
+  private baseUrl = 'https://pocket-pills.herokuapp.com/api';
 
 
   currentUser: any = [];

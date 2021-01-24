@@ -30,6 +30,9 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { CategoryPipe } from './category.pipe';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { SingleProductComponent } from './components/single-product/single-product.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { OrderSuccessComponent } from './components/order-success/order-success.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +62,10 @@ import { RegisterComponent } from './components/register/register.component';
     AdminProductsComponent,
     CategoryPipe,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SingleProductComponent,
+    ShoppingCartComponent,
+    OrderSuccessComponent
   ],
   imports: [
     BrowserModule,
