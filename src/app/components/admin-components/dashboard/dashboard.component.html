@@ -102,22 +102,7 @@
                             <tr *ngFor="let order of adminOrders">
                                 <th scope="row"><b>{{order.invNo}}</b></th>
                                 <td><b>{{order.invDate}}</b></td>
-                                <td><select 
-                                    class="form-control" 
-                                    name="status" 
-                                    required 
-                                    >
-                                      <ng-container *ngIf = "order.invStatus === 'Processing'">
-                                        <option value="Processing" selected>Processing</option>
-                                        <option value="Delivered">Delivered</option>
-                                      </ng-container>
-                                      <ng-container *ngIf = "order.invStatus === 'Delivered'">
-                                        <option value="Processing">Processing</option>
-                                        <option value="Delivered" selected>Delivered</option>
-                                       </ng-container>
-                                   
-                                   </select>
-                                </td>
+                                <td><b>{{order.invStatus}}</b></td>
                                 <td><b>{{order.userName}}</b></td>
                                 <td><b>{{order.productCode}}</b></td>
                                 <td><b>{{order.productQuantity}}</b></td>
