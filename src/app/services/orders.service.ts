@@ -36,6 +36,14 @@ export class OrdersService {
     return this.http.get(`${this.baseUrl}/pharmacy/${this.branchId}/orders`);
   }
 
+  updateStatus(invDetailsNo){
+    return this.http.put(`${this.baseUrl}/customer/orders/${invDetailsNo}`, invDetailsNo);
+  }
+
+  cancelOrder(invDetailsNo){
+    return this.http.delete(`${this.baseUrl}/customer/orders/${invDetailsNo}`, invDetailsNo);
+  }
+
   // getAdminOrder(invNo, productCode){
   //   if(localStorage.getItem('currentUserBranches')){
   //     this.currentBranch = JSON.parse(localStorage.getItem('currentUserBranches'));

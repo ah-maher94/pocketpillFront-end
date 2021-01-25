@@ -91,8 +91,6 @@
                                 <th scope="col">Invoise NO.</th>
                                 <th scope="col">Invoise Date</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">User Name</th>
-                                <th scope="col">Product Code</th>
                                 <th scope="col">Product Quantity</th>
                                 <th scope="col">Product Name</th>
                                 <th scope="col">Price</th>
@@ -103,15 +101,18 @@
                                 <th scope="row"><b>{{order.invNo}}</b></th>
                                 <td><b>{{order.invDate}}</b></td>
                                 <td><b>{{order.invStatus}}</b></td>
-                                <td><b>{{order.userName}}</b></td>
-                                <td><b>{{order.productCode}}</b></td>
                                 <td><b>{{order.productQuantity}}</b></td>
                                 <td><b>{{order.productName}}</b></td>
                                 <td><b>{{order.productPrice*order.productQuantity}}</b></td>
                                 <td class="text-center">
-                                    <a href="#" class="tm-product-delete-link" id="deleteInvoice" (click)="deleteInvoice(order.invNo)">
-                                      <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                                    </a>
+                                    <div *ngIf="order.invStatus == 'Processing'">
+                                    <span class="btn-success btn-sm mt-1 mb-5 decline action-cursor" (click)="updateStatus(order.invDetailsId)">
+                                        Delivered
+                                      </span>
+                                      <span class="btn-danger btn-sm mt-1 mb-5 decline action-cursor" (click)="deleteInvoice(order.invDetailsId)">
+                                        Cancel
+                                      </span>
+                                    </div>
                                   </td>
                             </tr>
                             </tbody>

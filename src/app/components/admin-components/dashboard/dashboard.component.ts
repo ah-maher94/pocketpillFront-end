@@ -11,6 +11,7 @@ import { OrdersService } from 'src/app/services/orders.service';
 export class DashboardComponent implements OnInit {
   // orders: Object;
   adminOrders: any = [];
+
   constructor(private http: HttpClient,
     private authService: AuthServiceService,
     private orderService: OrdersService) { }
@@ -19,20 +20,21 @@ export class DashboardComponent implements OnInit {
       this.authService.authUser();
 
       this.orderService.getAdminOrders().subscribe((data) => {
-        // console.log(data);
+        console.log(data);
         this.adminOrders = data;
       });
   }
 
-  deleteInvoice(invNo) {
-    
-    console.log(invNo);
-    
-    this.http
-    .delete('https://pocket-pills.herokuapp.com/api/customer/orders/' + invNo)
-    .subscribe((res) => {
-      // this.products = res;
-      });
+  deleteInvoice(invDetailsNo) {
+    this.orderService.cancelOrder(invDetailsNo).subscribe((data) => {
+      window.location.reload();
+    });
+  }
+
+  updateStatus(invDetailsNo){
+    this.orderService.updateStatus(invDetailsNo).subscribe((data) => {
+      window.location.reload();
+    });
   }
 
 }

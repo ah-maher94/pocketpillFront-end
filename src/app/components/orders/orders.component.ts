@@ -18,12 +18,18 @@ export class OrdersComponent implements OnInit {
   ngOnInit(): void {
     this.authService.authAdmin();
     this.orderService.getUserOrders().subscribe((data) => {
-      // console.log(data);
+      console.log(data);
       this.userOrders = data;
     });
     this.authService.getUser().subscribe((data) => {
       // console.log(data);
       this.userInfo = data;
+    });
+  }
+
+  cancelOrder(invDetailsNo){
+    this.orderService.cancelOrder(invDetailsNo).subscribe((data) => {
+      window.location.reload();
     });
   }
 
