@@ -4,7 +4,7 @@
     <div class="row border-bottom-black">
       <div class="col-sm-6 col-md-3">
         <div class="widget dark">
-          <a href="homepage.html"><img class="mb-20" alt="" height="" src="assets/images/logo.png"></a>
+          <a [routerLink]="['/']"><img class="mb-20" alt="" height="" src="assets/images/logo.png"></a>
           <p>Always laugh when you can. It is cheap medicine.</p>
           <ul class="list-inline mt-5">
             <li class="m-0 pl-10 pr-10"> <i class="fa fa-map-marker text-theme-colored mr-5"></i> <a
@@ -33,18 +33,18 @@
         <div class="widget dark">
           <h5 class="widget-title line-bottom">Useful Links</h5>
           <ul class="list-border">
-            <li><a href="homepage.html">Home</a></li>
-            <li><a href="aboutus.html">About us</a></li>
-            <li><a href="contactus.html">Contact</a></li>
+            <li><a [routerLink]="['/']">Home</a></li>
+            <li><a [routerLink]="['/about']">About us</a></li>
+            <li><a [routerLink]="['/contact']">Contact</a></li>
           </ul>
         </div>
         <div class="widget dark">
-          <h5 class="widget-title line-bottom">Other Links</h5>
+          <!-- <h5 class="widget-title line-bottom">Other Links</h5>
           <ul class="list-border">
             <li><a href="shortcode-sitemap.html">FAQ</a></li>
             <li><a href="shortcode-sitemap.html">Sitemap</a></li>
             <li><a href="page-contact1.html">Policy</a></li>
-          </ul>
+          </ul> -->
         </div>
       </div>
       <div class="col-sm-6 col-md-3">
@@ -52,25 +52,33 @@
           <h5 class="widget-title line-bottom">Latest News</h5>
           <div class="latest-posts">
             <article class="post media-post clearfix pb-0 mb-10">
-              <a href="blog-single-right-sidebar.html" class="post-thumb"><img alt="" src="assets/images/awards/1.png"></a>
+              <a  class="post-thumb"><img alt="" src="assets/images/home-page/events/1.jpg"></a>
               <div class="post-right">
-                <h5 class="post-title mt-0 mb-5"><a href="blog-single-right-sidebar.html">Sustainable
+                <h5 class="post-title mt-0 mb-5"><a >Sustainable
                     Construction</a></h5>
                 <p class="post-date mb-0 font-12">Mar 08, 2020</p>
               </div>
             </article>
             <article class="post media-post clearfix pb-0 mb-10">
-              <a href="blog-single-right-sidebar.html" class="post-thumb"><img alt="" src="assets/images/awards/2.png"></a>
+              <a  class="post-thumb"><img alt="" src="assets/images/home-page/events/2.jpg"></a>
               <div class="post-right">
-                <h5 class="post-title mt-0 mb-5"><a href="blog-single-right-sidebar.html">Industrial Coatings</a>
+                <h5 class="post-title mt-0 mb-5"><a >Industrial Coatings</a>
                 </h5>
                 <p class="post-date mb-0 font-12">Mar 08, 2020</p>
               </div>
             </article>
             <article class="post media-post clearfix pb-0 mb-10">
-              <a href="blog-single-right-sidebar.html" class="post-thumb"><img alt="" src="assets/images/awards/3.png"></a>
+              <a  class="post-thumb"><img alt="" src="assets/images/home-page/events/3.jpg"></a>
               <div class="post-right">
-                <h5 class="post-title mt-0 mb-5"><a href="blog-single-right-sidebar.html">Storefront
+                <h5 class="post-title mt-0 mb-5"><a >Storefront
+                    Installations</a></h5>
+                <p class="post-date mb-0 font-12">Mar 08, 2020</p>
+              </div>
+            </article>
+            <article class="post media-post clearfix pb-0 mb-10">
+              <a  class="post-thumb"><img alt="" src="assets/images/home-page/events/4.jpg"></a>
+              <div class="post-right">
+                <h5 class="post-title mt-0 mb-5"><a >Storefront
                     Installations</a></h5>
                 <p class="post-date mb-0 font-12">Mar 08, 2020</p>
               </div>

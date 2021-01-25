@@ -28,23 +28,21 @@
           </div>
         </div>
       </div>
-
-
   </div>
 </div>
 
 <!-- End Categories -->
 
 <!-- Section: Call To Action -->
-<section  class="divider parallax layer-overlay overlay-theme-colored2-9" data-bg-img="images/profile/call-us.png">
+<section  class="divider parallax layer-overlay overlay-theme-colored2-9 CallToAction" style="background-image: url('assets/images/banners/home-call.jpg');">
   <div class="container pt-20 pb-20">
     <div class="call-to-action">
       <div class="row">
         <div class="col-md-8 col-md-offset-2 text-center">
-          <h2 class="text-theme-colored"><i class="pe-7s-call text-theme-colored"></i><a class="text-theme-colored" href="#"> (+01) &ndash; 234 567 890</a></h2>
+          <h2 class="text-theme-colored"><i class="pe-7s-call text-theme-colored"></i><a class="text-theme-colored" href="#"> (+0102) &ndash; 442 7564</a></h2>
           <h2 class="text-white">Please feel free to contact us for emergency case.</h2>
-          <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit rem autem voluptatem obcaecati lienum phaedrum torquatos nec eu, vis detraxit periculis ex.</p>
-          <a href="#" class="btn btn-theme-colored mt-20">Contact With Us</a>
+          <p class="text-white">Together for better health</p>
+          <a routerLink="/contact" class="btn btn-theme-colored mt-20">Contact With Us</a>
         </div>
       </div>
     </div>
@@ -74,7 +72,7 @@
                     {{ category["categoryName"] }}
                   </p>
                   <p class="carousel--item__details--title">
-                    Browse Products<a [routerLink]="['/categories']"
+                    Browse Products<a [routerLink]="['/products']"
                       ><i
                         class="fa fa-arrow-circle-right fa-2x"
                         style="margin-left: 5px"

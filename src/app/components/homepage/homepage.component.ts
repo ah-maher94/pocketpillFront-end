@@ -12,6 +12,8 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 export class HomepageComponent implements OnInit {
   categories: any;
   products: Object;
+  productCodeService: any;
+  router: any;
   constructor(
     private authService: AuthServiceService,
     private http: HttpClient,private setCategory: DataService) { }
@@ -32,5 +34,16 @@ export class HomepageComponent implements OnInit {
     } catch (error) {
       
     }
+  }
+  product(event)
+  {
+    // console.log(event.target.value);
+    this.setCategory.changeMessage(event.target.value);
+  }
+
+  singleProduct(productCode)
+  {
+    this.productCodeService.changeProductCode(productCode);
+    this.router.navigate(['product']);
   }
 }
