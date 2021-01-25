@@ -221,3 +221,10 @@ form.form1 {
     transform: translateX(250px);
    
 }
+
+
+.pharmacyOwner{
+    font-size: 15px;
+    margin-left: 70px;
+    cursor: pointer;
+}

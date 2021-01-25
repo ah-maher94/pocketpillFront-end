@@ -43,7 +43,7 @@ export class AuthServiceService {
     if(localStorage.getItem('currentUser')){
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
       if(this.currentUser[0]['userRole'] == "admin"){
-        this.router.navigate(['profile']);
+        this.router.navigate(['dashboard']);
       }
       if(this.currentUser[0]['userRole'] == "superAdmin"){
         this.router.navigate(['superadmin']);
@@ -57,5 +57,17 @@ export class AuthServiceService {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.id= this.currentUser[0]['userId']
     return this.http.get(`${this.baseUrl}/users/${this.id}`)
+  }
+
+  getRequests(){
+    return this.http.get(`${this.baseUrl}/pharmacy/requests`)
+  }
+
+  declineRequest(notificationId){
+    return this.http.get(`${this.baseUrl}/pharmacy/requests/${notificationId}`)
+  }
+
+  acceptRequest(notificationId){
+    return this.http.post(`${this.baseUrl}/pharmacy/requests/${notificationId}`, notificationId)
   }
 }

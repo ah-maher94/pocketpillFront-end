@@ -9,6 +9,9 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 })
 export class SuperDashboardComponent implements OnInit {
   orders: any;
+  allRequests: any = [];
+  allRequestsLength: any = 0;
+  contactInfo:boolean = false;
 
   constructor(private http: HttpClient,
     private authService: AuthServiceService) { }
@@ -21,12 +24,34 @@ export class SuperDashboardComponent implements OnInit {
        this.orders=res;
        console.log(res);
      });
-
-   
-
     } catch (error) {
       
     }
+
+    this.authService.getRequests().subscribe((data)=>{
+      console.log(data);
+      this.allRequests = data;
+      this.allRequestsLength = Object.keys(data).length;
+    });
+
+
+  }
+
+  accept(notificationId){
+    this.authService.acceptRequest(notificationId).subscribe((data)=>{
+      window.location.reload();
+    });
+  }
+
+  decline(notificationId){
+    // console.log(notificationId);
+    this.authService.declineRequest(notificationId).subscribe((data)=>{
+      window.location.reload();
+    });
+  }
+
+  toggleContact(){
+    this.contactInfo = !this.contactInfo;
   }
 
 }

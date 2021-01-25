@@ -11,13 +11,18 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 export class RegisterComponent implements OnInit {
 
   registerReactiveForm: FormGroup;
-
+  havePharmacy: boolean= false;
   public form = {
     userName: null,
     userEmail: null,
     userPassword: null,
     userPhone: null,
     userLocation: null,
+    pharmacyName: null,
+    pharmacyPhoto: null,
+    PharmacyOwner:null,
+    branchRegion:null,
+    branchStreet:null,
   };
 
   emailRegex = /^[a-z0-9._-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
@@ -33,6 +38,11 @@ export class RegisterComponent implements OnInit {
       userPassword: ['', [Validators.required, Validators.pattern(this.passwordRegex)]],
       userPhone: ['', [Validators.required,  Validators.pattern(this.phoneRegex)]],
       userLocation: ['', [Validators.required]],
+      pharmacyName: ['', [Validators.required, Validators.minLength(4)]],
+      pharmacyPhoto: ['', [Validators.required]],
+      PharmacyOwner: ['', [Validators.required, Validators.minLength(4)]],
+      branchRegion: ['', [Validators.required, Validators.minLength(4)]],
+      branchStreet: ['', [Validators.required, Validators.minLength(4)]],
     });
   }
 
@@ -44,8 +54,14 @@ export class RegisterComponent implements OnInit {
   onSubmit(){ 
     this.authService.register(this.form)
     .subscribe((data) => {
+      console.log("dsfsfd");
+      
         this.router.navigate(['login']);
     });
 
+  }
+
+  toggleAdmin(){
+    this.havePharmacy = !this.havePharmacy;
   }
 }
