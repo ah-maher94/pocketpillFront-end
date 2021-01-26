@@ -43,6 +43,11 @@ export class AdminProductsComponent implements OnInit {
       
     } catch (error) {}
   }
+  adminLogout()
+  {
+    localStorage.clear();
+    this.router.navigate(['login']);
+  }
 
   deleteCategory(categoryName) {
     console.log(categoryName); 

@@ -58,7 +58,11 @@ export class StuffComponent implements OnInit {
   //       });
   //   } catch (error) { }
   // }
-
+  adminLogout()
+  {
+    localStorage.clear();
+    this.router.navigate(['login']);
+  }
   deleteEmployee(staffId) {
     this.http
       .delete('https://pocket-pills.herokuapp.com/api/staff/' + staffId)

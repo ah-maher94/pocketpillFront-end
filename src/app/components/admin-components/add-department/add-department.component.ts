@@ -23,6 +23,11 @@ export class AddDepartmentComponent implements OnInit {
       departmentName: ['', [Validators.required]],
     });
   }
+  adminLogout()
+  {
+    localStorage.clear();
+    this.router.navigate(['login']);
+  }
   get registerFormControl() {
     
     return this.addDeparmentReactiveForm.controls;

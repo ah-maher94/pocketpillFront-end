@@ -26,6 +26,11 @@ export class AddCatagoryComponent implements OnInit {
       categoryImage: ['', [Validators.required]],
     });
   }
+  adminLogout()
+  {
+    localStorage.clear();
+    this.router.navigate(['login']);
+  }
   get registerFormControl() {
     
     return this.addCategoryReactiveForm.controls;

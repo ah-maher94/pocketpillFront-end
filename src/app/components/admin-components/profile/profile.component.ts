@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 export class ProfileComponent implements OnInit {
   userInfo: any=[];
 
-  constructor(private authService: AuthServiceService) { }
+  constructor(private authService: AuthServiceService,private router: Router) { }
 
   ngOnInit(): void {
     this.authService.authUser();
@@ -18,5 +19,9 @@ export class ProfileComponent implements OnInit {
       this.userInfo = data;
     });
   }
-
+  adminLogout()
+  {
+    localStorage.clear();
+    this.router.navigate(['login']);
+  }
 }

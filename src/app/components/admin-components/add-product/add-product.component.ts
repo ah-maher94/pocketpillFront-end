@@ -48,6 +48,11 @@ export class AddProductComponent implements OnInit {
       
     }
   }
+  adminLogout()
+  {
+    localStorage.clear();
+    this.router.navigate(['login']);
+  }
   onFileSelected(event)
   {
     this.selectedFile=<File>event.target.files[0];  }

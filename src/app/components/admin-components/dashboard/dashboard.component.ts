@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { OrdersService } from 'src/app/services/orders.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +15,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(private http: HttpClient,
     private authService: AuthServiceService,
-    private orderService: OrdersService) { }
+    private orderService: OrdersService,
+    private router: Router) { }
 
     async ngOnInit(): Promise<void> {
       this.authService.authUser();
@@ -23,6 +25,11 @@ export class DashboardComponent implements OnInit {
         console.log(data);
         this.adminOrders = data;
       });
+  }
+  adminLogout()
+  {
+    localStorage.clear();
+    this.router.navigate(['login']);
   }
 
   deleteInvoice(invDetailsNo) {

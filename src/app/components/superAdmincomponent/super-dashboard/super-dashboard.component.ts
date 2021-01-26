@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
@@ -14,8 +15,12 @@ export class SuperDashboardComponent implements OnInit {
   contactInfo:boolean = false;
 
   constructor(private http: HttpClient,
-    private authService: AuthServiceService) { }
-
+    private authService: AuthServiceService,private router: Router) { }
+    adminLogout()
+    {
+      localStorage.clear();
+      this.router.navigate(['login']);
+    }
     async ngOnInit(): Promise<void> {
       this.authService.authUser();
       try {
