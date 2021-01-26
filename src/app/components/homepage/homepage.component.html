@@ -388,7 +388,7 @@
 
     
 
-
+    
     <!-- Section: Depertment -->
     <section id="depertment" class="bg-silver-light">
       <div class="container">
@@ -430,7 +430,40 @@
         </div>
       </div>
     </section>
-
+    <!-- Divider: Clients -->
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="owl-carousel" id="categories-popular" data-nav="true">
+              <div class="col-md-3 col-sm-4"  *ngFor="let product of products ; let i=index">
+                <div *ngIf="i<4">
+                <div class="carousel--item">
+                  <img
+                    class="carousel--item__img"
+                    [src]="product['productImage']"
+                    alt="item"
+                  />
+                  <div class="carousel--item__details">
+                    <p class="carousel--item__details--title">{{product['productName']}}</p>
+                    <p class="carousel--item__details--title">Browse Products<a  (click)="singleProduct(product['productCode'])" ><i class="fa fa-arrow-circle-right fa-2x" [routerLink]="['/product']" style="margin-left:5px" aria-hidden="true" (click)='product($event)' [value]='product["productName"]'>
+                    </i></a></p>
+                  </div>
+                </div>
+                </div>
+              </div>
+              <!-- <div class="item"><img src="assets/images/categories/nivea.png" alt=""></div>
+              <div class="item"><img src="assets/images/categories/ListerineMouthwash.png" alt=""></div>
+              <div class="item"><img src="assets/images/categories/dettole2.png" alt=""></div>
+              <div class="item"><img src="assets/images/categories/nivea.png" alt=""></div>
+              <div class="item"><img src="assets/images/categories/ListerineMouthwash.png" alt=""></div>
+            -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
     <!-- Section: Pricing -->
     <section id="pricing">
       <div class="container pb-50">
@@ -857,38 +890,5 @@
       </div>
     </section>
 
-    <!-- Divider: Clients -->
-    <section>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="owl-carousel" id="categories-popular" data-nav="true">
-              <div class="col-md-3 col-sm-4"  *ngFor="let product of products ; let i=index">
-                <div *ngIf="i<4">
-                <div class="carousel--item">
-                  <img
-                    class="carousel--item__img"
-                    [src]="product['productImage']"
-                    alt="item"
-                  />
-                  <div class="carousel--item__details">
-                    <p class="carousel--item__details--title">{{product['productName']}}</p>
-                    <p class="carousel--item__details--title">Browse Products<a  (click)="singleProduct(product['productCode'])" ><i class="fa fa-arrow-circle-right fa-2x" [routerLink]="['/product']" style="margin-left:5px" aria-hidden="true" (click)='product($event)' [value]='product["productName"]'>
-                    </i></a></p>
-                  </div>
-                </div>
-                </div>
-              </div>
-              <!-- <div class="item"><img src="assets/images/categories/nivea.png" alt=""></div>
-              <div class="item"><img src="assets/images/categories/ListerineMouthwash.png" alt=""></div>
-              <div class="item"><img src="assets/images/categories/dettole2.png" alt=""></div>
-              <div class="item"><img src="assets/images/categories/nivea.png" alt=""></div>
-              <div class="item"><img src="assets/images/categories/ListerineMouthwash.png" alt=""></div>
-            -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
+    
   <!-- end main-content -->
