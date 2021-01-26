@@ -4,6 +4,7 @@ import { HttpClient}from '@angular/common/http';
 import { FormGroup, FormControl,FormBuilder,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
+import { Observable, Subscriber } from 'rxjs';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -23,6 +24,7 @@ export class AddProductComponent implements OnInit {
   productCodeerror;
   imageLinkerror;
   branchId;
+  myImage;
   constructor(private authService: AuthServiceService,
     private http: HttpClient,private profile: FormBuilder,private router: Router) { }
 
@@ -36,7 +38,6 @@ export class AddProductComponent implements OnInit {
       quantity: ['',[Validators.required]],
       manufacturer: ['',[Validators.required]],
       productCode: ['',[Validators.required]],
-      imageLink: ['',[Validators.required]],
     });
     try {
       await this.http.get("https://pocket-pills.herokuapp.com/api/category")
@@ -48,6 +49,36 @@ export class AddProductComponent implements OnInit {
       
     }
   }
+  onChange($event: Event)
+  {
+    console.log("hi");
+    const file =($event.target as HTMLInputElement).files[0];
+    // console.log(file);
+    this.convertToBase64(file);
+  }
+  convertToBase64(file: File)
+  {
+    const observable=new Observable((subscrible: Subscriber<any>)=>{
+      this.readfile(file,subscrible);
+    })
+    observable.subscribe((d)=>{
+      console.log(d);
+      
+      this.myImage=d;
+    })
+  }
+
+  readfile(file: File,subscrible: Subscriber<any>)
+  {
+    const filereader=new FileReader();
+    filereader.readAsDataURL(file);
+
+    filereader.onload=()=>{
+      subscrible.next(filereader.result);
+      subscrible.complete();
+    }
+  }
+
   adminLogout()
   {
     localStorage.clear();
@@ -72,7 +103,6 @@ export class AddProductComponent implements OnInit {
     this.quantityerror=this.addProductReactiveForm.controls.quantity.errors;
     this.categoryerror=this.addProductReactiveForm.controls.category.errors;
     this.manufacturererror=this.addProductReactiveForm.controls.manufacturer.errors;
-    this.imageLinkerror=this.addProductReactiveForm.controls.imageLink.errors;
     this.productCodeerror=this.addProductReactiveForm.controls.productCode.errors;
     console.log(this.addProductReactiveForm.controls.category.value);
       
@@ -85,8 +115,7 @@ export class AddProductComponent implements OnInit {
       && this.manufacturererror==null)
     {
       const fd =new FormData;
-      
-      fd.append('productImage',this.addProductReactiveForm.controls.imageLink.value);
+      fd.append('productImage',this.myImage);
       // fd.append('productImage',this.selectedFile,this.selectedFile.name);
 
       fd.append('productPrice',this.addProductReactiveForm.controls.productPrice.value);

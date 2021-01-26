@@ -72,20 +72,6 @@
                 </div>
                 <div class="form-group mb-3">
                   <label
-                    for="imageLink"
-                    >add Image Link
-                  </label>
-                  <input
-                    id="imageLink"
-                    name="imageLink"
-                    type="text"
-                    class="form-control validate"
-                    formControlName="imageLink"
-                    required
-                  />
-                </div>
-                <div class="form-group mb-3">
-                  <label
                     for="description"
                     >Description</label
                   >
@@ -145,13 +131,25 @@
                 </div>
             </form>
             </div>
-          
+            <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+              
+                    <img [src]="myImage" width="400px" height="200px">
+       
+              <div class="custom-file mt-3 mb-3">
+                <input id="fileInput" (change)="onChange($event)" type="file" style="display:none;" />
+                <input
+                  type="button"
+                  class="btn btn-primary btn-block mx-auto"
+                  value="UPLOAD PRODUCT IMAGE"
+                  onclick="document.getElementById('fileInput').click();"
+                />
+              </div>
+            </div>
+           
           </div>
-        </div>
+          </div>
       </div>
     </div>
     </div>
 
-    <app-admin-footer></app-admin-footer>  
-    
-    
+<app-admin-footer></app-admin-footer>
