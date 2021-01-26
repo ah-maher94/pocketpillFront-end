@@ -12,4 +12,9 @@ body{
   margin-right:5px;
   cursor: pointer;
   padding: 5px;
+  width: 40%;
+}
+
+.dashboard-continer{
+  min-height: 725px;
 }

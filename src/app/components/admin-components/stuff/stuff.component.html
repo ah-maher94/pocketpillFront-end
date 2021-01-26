@@ -53,13 +53,13 @@
                 </a>
               </li>
 
-              <li class="nav-item">
-                <a class="nav-link " routerLink="create-account">
+              <!-- <li class="nav-item">
+                <a class="nav-link " routerLink="/create-account">
                   <i class="far fa-user"></i>Create Account
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
-                <a class="nav-link" routerLink="stuff">
+                <a class="nav-link" routerLink="/stuff">
                   <i class="fas fa-users"></i>Stuff
                 </a>
               </li>
@@ -114,7 +114,6 @@
                   <th scope="col">NAME</th>
                   <th scope="col">Salary</th>
                   <th scope="col">department</th>
-                  <th scope="col">Phone</th>
                   <th scope="col">Email</th>
                   <th scope="col">&nbsp;</th>
                 </tr>
@@ -129,9 +128,6 @@
                   </td>
                   <td id="{{ i }}" class="catchRow" (click)="myFunction($event)">
                     {{ employee.staffDepartment }}
-                  </td>
-                  <td id="{{ i }}" class="catchRow" (click)="myFunction($event)">
-                    {{ employee.staffPhone }}
                   </td>
                   <td>{{ employee.staffEmail }}</td>
                   <td>
