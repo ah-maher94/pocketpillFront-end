@@ -12,8 +12,11 @@
 				<div>I</div>
 				<div>N</div>
 			</div>
-
+			<div class="wrongPassword">
+			<span *ngIf="error" class="btn-danger btn-sm mt-1 mb-5" align="center">{{error}}</span>
+				</div>
 			<form class="form1" #loginForm=ngForm (ngSubmit)="onSubmit()">
+				
 				<input class="un " name="userEmail" type="text" align="center" placeholder="Email" [(ngModel)]="form.userEmail" required>
 				<input class="pass" type="password" name="userPassword" align="center" placeholder="Password" [(ngModel)]="form.userPassword" required>
 				<div class="col-md-12 un radiomain"
