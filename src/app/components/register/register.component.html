@@ -324,7 +324,13 @@
       </div>
 
 
-      <button class="btn btn-primary register">Register</button>
+      <button class="btn btn-primary register" 
+      [disabled]="!registerFormControl.userName.valid ||
+      !registerFormControl.userEmail.valid ||
+      !registerFormControl.userPassword.valid ||
+      !registerFormControl.userPhone.valid ||
+      !registerFormControl.userLocation.valid 
+      ">Register</button>
       <ul class="loginul ftco-footer-social list-unstyled">
         <a href="#"></a>
         <li class="ftco-animate fadeInUp ftco-animated">

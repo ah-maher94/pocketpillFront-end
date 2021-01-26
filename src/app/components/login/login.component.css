@@ -232,3 +232,8 @@ form.form1 {
     transform: translateX(220px);
    
 }
+
+.wrongPassword{
+    text-align: center;
+    margin-top: 50px;
+}

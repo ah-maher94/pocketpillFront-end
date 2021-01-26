@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   currentUser: any = [];
   currentUserBranch: any = [];
   temp :any;
+  public error: any; 
   constructor(
     private router: Router,
     private authService: AuthServiceService,
@@ -71,7 +72,15 @@ export class LoginComponent implements OnInit {
 
         }
 
-      });
+      }, error => {
+        // console.log(error.error.message);
+        if(error.error.message == 'The given data was invalid.'){
+          this.error = 'The given data is invalid';
+        }else{
+          this.error = 'Wrong Email or Password';
+        }
+        
+    });
   }
 
 }
