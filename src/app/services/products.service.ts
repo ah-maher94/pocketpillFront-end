@@ -48,4 +48,8 @@ export class ProductsService {
     this.userId= this.currentUser[0]['userId'];
     return this.http.get(`${this.baseUrl}/users/cart/${this.userId}`);
   }
+  
+  searchProduct(searchFor){
+    return this.http.get(`${this.baseUrl}/products/search/${searchFor}`);
+  }
 }

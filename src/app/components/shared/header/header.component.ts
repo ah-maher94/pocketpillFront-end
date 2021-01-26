@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  searchValue: string;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -20,6 +21,12 @@ export class HeaderComponent implements OnInit {
   logout(){
     localStorage.clear();
     this.router.navigate(['categories']);
+  }
+
+  searchProduct(){
+    this.router.navigate(['products/search'], {
+      queryParams:{'searchTerm': this.searchValue}
+    })
   }
 
 }

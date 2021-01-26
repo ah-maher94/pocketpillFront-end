@@ -22,6 +22,7 @@ import { SingleProductComponent } from './components/single-product/single-produ
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
 import { SuperDashboardComponent } from './components/superAdmincomponent/super-dashboard/super-dashboard.component';
+import { ProductSearchComponent } from './components/product-search/product-search.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -46,7 +47,8 @@ const routes: Routes = [
   {path:'superdashboard',component:SuperDashboardComponent },
   {path:'product',component:SingleProductComponent },
   {path:'shopping-cart',component:ShoppingCartComponent },
-  {path:'order-success',component:OrderSuccessComponent }
+  {path:'order-success',component:OrderSuccessComponent },
+  {path:'products/search',component:ProductSearchComponent }
 
 ];
 
