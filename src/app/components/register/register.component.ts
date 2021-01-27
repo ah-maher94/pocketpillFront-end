@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Subscriber } from 'rxjs';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
@@ -12,6 +14,7 @@ export class RegisterComponent implements OnInit {
 
   registerReactiveForm: FormGroup;
   havePharmacy: boolean= false;
+  myImage;
   public form = {
     userName: null,
     userEmail: null,
@@ -51,6 +54,33 @@ export class RegisterComponent implements OnInit {
   }
 
 
+  onChange($event: Event)
+  {
+    const file =($event.target as HTMLInputElement).files[0];
+    // console.log(file);
+    this.convertToBase64(file);
+  }
+  convertToBase64(file: File)
+  {
+    const observable=new Observable((subscrible: Subscriber<any>)=>{
+      this.readfile(file,subscrible);
+    })
+    observable.subscribe((d)=>{
+      this.myImage=d;
+      this.form.pharmacyPhoto=d;
+    })
+  }
+
+  readfile(file: File,subscrible: Subscriber<any>)
+  {
+    const filereader=new FileReader();
+    filereader.readAsDataURL(file);
+
+    filereader.onload=()=>{
+      subscrible.next(filereader.result);
+      subscrible.complete();
+    }
+  }
   onSubmit(){ 
     this.authService.register(this.form)
     .subscribe((data) => {

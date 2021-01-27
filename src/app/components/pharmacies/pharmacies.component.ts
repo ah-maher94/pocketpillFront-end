@@ -25,7 +25,6 @@ export class PharmaciesComponent implements OnInit {
       await this.http.get("https://pocket-pills.herokuapp.com/api/pharmacy")
       .subscribe(res =>{
       this.pharmacies=res;
-      // console.log(res);
     });
 
     } catch (error) {
