@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   registerReactiveForm: FormGroup;
   havePharmacy: boolean= false;
   myImage;
+  public error: any; 
   public form = {
     userName: null,
     userEmail: null,
@@ -84,10 +85,21 @@ export class RegisterComponent implements OnInit {
   onSubmit(){ 
     this.authService.register(this.form)
     .subscribe((data) => {
-      console.log("dsfsfd");
+      // console.log("dsfsfd");
       
         this.router.navigate(['login']);
-    });
+    }, error => {
+      // console.log(error.error.errors.userEmail[0]);
+      if(error.error.errors.userEmail[0]=='The user email has already been taken.'){
+        this.error = 'The user email has already been taken';
+      }
+      else{
+        this.error = 'Complete required fields';
+      }
+      // console.log(this.error);
+
+      
+  });
 
   }
 

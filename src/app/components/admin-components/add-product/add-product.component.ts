@@ -142,6 +142,8 @@ export class AddProductComponent implements OnInit {
       });
      
 
+    }, error => {
+      alert("product code already exist");
     });
       // this.router.navigate(['/home']);
     }

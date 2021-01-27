@@ -12,7 +12,14 @@
       <div>U</div>
       <div>P</div>
     </div>
+    
+    <div class="wrongPassword">
+			<span *ngIf="error" class="btn-danger btn-sm mt-1 mb-5" align="center">{{error}}</span>
+        </div>
+        
+
     <form
+      #registerForm=ngForm
       class="form1"
       [formGroup]="registerReactiveForm"
       (ngSubmit)="onSubmit()"
@@ -324,6 +331,11 @@
       </div>
 
 
+      <button *ngIf="havePharmacy; else userRegister" 
+      class="btn btn-primary register" 
+      [disabled]="!registerForm.valid">Register</button>
+
+      <ng-template #userRegister>
       <button class="btn btn-primary register" 
       [disabled]="!registerFormControl.userName.valid ||
       !registerFormControl.userEmail.valid ||
@@ -331,6 +343,8 @@
       !registerFormControl.userPhone.valid ||
       !registerFormControl.userLocation.valid 
       ">Register</button>
+      </ng-template>
+
       <ul class="loginul ftco-footer-social list-unstyled">
         <a href="#"></a>
         <li class="ftco-animate fadeInUp ftco-animated">
